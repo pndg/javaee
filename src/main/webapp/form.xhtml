@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<h:form enctype="multipart/form-data">
+       <div>
+       		 <h:outputLabel value="Nome" />
+       		 <h:inputText value="#{ContaBean.conta.nome}"
+                required="true" id="nome"/>
+                <h:message for="nome" />
+    	</div>
+    	<div>
+            <h:outputLabel value="Data"/>
+            <h:inputText value="#{ContaBean.conta.data}" 
+                required="true" id="data" />
+            <h:message for="data" />
+        </div>
+    	<div>
+            <h:outputLabel value="Valor"/>
+            <h:inputText value="#{ContaBean.conta.valor}" 
+                required="true" id="valor" />
+            <h:message for="valor" />
+        </div>
+   		<div>
+    		<h:outputLabel value="Tipo Lançamento" />
+   			<h:inputText value="#{ContaBean.conta.tipoLancamento}"
+            	id="tipoLancamento"/>
+   			<h:message for="tipoLancamento" />
+		</div>
+		
+   		 		 
+    <h:commandButton value="Cadastrar" action="#{ContaBean.salvar}" />
+</h:form>
+
+</html>
