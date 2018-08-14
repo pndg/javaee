@@ -20,7 +20,7 @@ public class Teste {
 	
 	
 	@Test
-	public void testesalvar() {
+	public void testesalvar() throws Exception {
 		conta = new Conta();
         conta.setNome("TESTE");
         conta.setDataLancamento("13/08/2018");

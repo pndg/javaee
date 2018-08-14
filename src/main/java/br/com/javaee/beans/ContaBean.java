@@ -17,32 +17,35 @@ public class ContaBean {
 	private ContaDao dao;
 	
 	@Transactional
-	public Conta salvar(Conta conta) {
+	public Conta salvar(Conta conta) throws Exception{
 		
 		try {	
 				conta = dao.salvar(conta);
 			
 			
 			} catch (Exception e) {
-				System.out.println(e);
+				throw e;
 			}
 		
 			return conta;
 	}
 	
 	@Transactional
-	public void excluir(Conta conta) {
-		
-		dao.excluir(conta);
+	public void excluir(Conta conta) throws Exception {
+		try {
+				dao.excluir(conta);
+		} catch (Exception e) {
+				throw e;
+		}
 		
 	}
 	
 	@Transactional
-	public Conta alterar(Conta conta) {
+	public Conta alterar(Conta conta) throws Exception {
 		try {	
 				conta = dao.alterar(conta);
 			} catch (Exception e) {
-				System.out.println(e);
+				throw e;
 			}
 		
 			return conta;
@@ -55,26 +58,38 @@ public class ContaBean {
 	@Transactional
 	public List<Conta> listar() {
 		
-			
-		this.contas = dao.listar();
+		try {
+				this.contas = dao.listar();
+		} catch (Exception e) {
+				throw e;
+		}	
+		
 		return contas;
 		
 	}
 	
 	public Conta listarId(Integer id){
+		try {
+				return dao.listarId(id);
+		} catch (Exception e) {
+			throw e;
+		}
 		
-		return dao.listarId(id);
 		
 	}
 	
 	private List<Conta> contasNome = new ArrayList<>();	
 	@Transactional
 	public List<Conta> listaNome(Conta conta){
-		
-		for(Conta contaN : dao.listarNome(conta)) {
-			
-			contasNome.add(contaN);
+		try {
+				for(Conta contaN : dao.listarNome(conta)) {
+				
+					contasNome.add(contaN);
+				}
+		} catch (Exception e) {
+			throw e;
 		}
+		
 			
 		return contasNome;
 	}	
@@ -83,21 +98,26 @@ public class ContaBean {
 
 	@Transactional
 	public List<Conta> listTipoLancamento(Conta conta){
+		try {
+				return dao.listarTipoLancamento(conta);
+		} catch (Exception e) {
+			throw e;
+		}
 		
-		return dao.listarTipoLancamento(conta);
 		
 	}
-	
 	
 	public List<Conta> contasData = new ArrayList<>();
 	@Transactional
 	public List<Conta> listaData(Conta conta){
-		
-		for(Conta contaD : dao.listarData(conta)) {
-			
-			contasData.add(contaD);
+		try {
+				for(Conta contaD : dao.listarData(conta)) {
+					
+					contasData.add(contaD);
+				}
+		} catch (Exception e) {
+			throw e;
 		}
-		
 		return contasData;
 	}
 	
