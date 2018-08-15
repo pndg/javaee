@@ -1,5 +1,7 @@
 package br.com.javaee.teste;
 
+
+
 import javax.inject.Inject;
 
 
@@ -36,38 +38,50 @@ public class Teste {
 	    
 	}
 	
-	@Test
-	@InSequence(1)
-	public  void testeSalvar() throws Exception{
-				
-			try {
-				
-				conta = bean.salvar(conta);
-				
-				Assert.assertTrue(conta.getId()>0);
-				
-				
-			} catch (Exception e) {
-				//throw (e);
-			}
-			
-			
-       		
-	}
 	
-	@Test
-	@InSequence(2)
-	public void testeExcluir() throws Exception{
-		
-	try {
-		conta = bean.salvar(conta);
-		System.out.println(conta);
-		
-	} catch (Exception e) {
-		 System.err.println("An IOException was caught :"+e.getMessage());
+	 @Test
+	    @InSequence(1)
+	    public void testeSalvar() {
 
-	}
-		
-	}
+	        try {
+	        		conta = bean.salvar(conta);
+	        		bean.excluir(conta);
+	        		Assert.assertTrue(conta.getId() > 0);
 
+	        } catch (Exception ex) {
+	           
+	        }
+
+	    }
+	 	@Test
+	    @InSequence(2)
+	    public void testeExcluir() throws Exception {
+	 	try {
+	        conta = bean.salvar(conta);
+	        bean.excluir(conta);
+	        Assert.assertTrue(conta.getId() > 0);
+	 	 } catch (Exception ex) {
+	           
+	        }
+
+	    }
+	 	
+	 	
+	    @Test
+	    @InSequence(3)
+	    public void testeAtualizar() throws Exception {
+	    	
+	    	String nome = "Alterada" ;
+	        conta = bean.salvar(conta);
+	        conta.setNome(nome);
+	        bean.alterar(conta);
+	        Conta busca = bean.listarId(conta.getId());
+
+	        bean.excluir(conta);
+	        Assert.assertTrue(busca.getNome().equals(nome));
+
+	    }
+
+	   
+	   
 }
