@@ -13,12 +13,7 @@ public class Conta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Override
-	public String toString() {
-		return "Conta [id=" + id + ", dataLancamento=" + dataLancamento + ", tipoLancamento=" + tipoLancamento
-				+ ", nome=" + nome + ", valor=" + valor + "]";
-	}
-
+	
 	private String dataLancamento;
 	
 	private Integer tipoLancamento;
