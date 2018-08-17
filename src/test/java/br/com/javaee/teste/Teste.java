@@ -119,7 +119,7 @@ public class Teste {
 
 	    @Test
 	    @InSequence(5)
-	    public void testeListaNome() throws Exception {
+	    public void testeListaNome(Conta conta) throws Exception {
 	    try {
 	        List<Conta> contas = new ArrayList<>();
 	        conta = bean.salvar(conta);

@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 
 @Entity
@@ -16,10 +19,13 @@ public class Conta {
 	
 	private String dataLancamento;
 	
+	@NotNull
 	private Integer tipoLancamento;
 	
+	@NotBlank
 	private String nome;
 	
+	@NotNull
 	private Double valor;
 	
 	public Integer getId() {

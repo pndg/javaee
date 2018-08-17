@@ -20,6 +20,7 @@ public class ContaBean {
 	public Conta salvar(Conta conta) throws Exception{
 		
 		try {	
+				valida(conta);
 				conta = dao.salvar(conta);
 			
 			
@@ -43,6 +44,7 @@ public class ContaBean {
 	@Transactional
 	public Conta alterar(Conta conta) throws Exception {
 		try {	
+				valida(conta);
 				conta = dao.alterar(conta);
 			} catch (Exception e) {
 				throw e;
@@ -120,5 +122,27 @@ public class ContaBean {
 		}
 		return contasData;
 	}
+	
+	
+	private void valida(Conta conta) throws Exception {
+
+        	if (conta.getNome() == null || (conta.getNome().length() < 5)) {
+        		throw new Exception("Insira o Nome da conta");
+        	}
+        
+        	if (conta.getDataLancamento() == null) {
+        		throw new Exception("Insira a data Lançamento");
+        	}
+        	
+        	if (conta.getValor() == null || conta.getValor() <= 0) {
+        		throw new Exception("Insira o valor");
+        	}
+
+        	if (conta.getTipoLancamento() == null) {
+        		throw new Exception("Insira o tipo Lançamento");
+        	} 
+        	
+        	
+    }
 	
 }
